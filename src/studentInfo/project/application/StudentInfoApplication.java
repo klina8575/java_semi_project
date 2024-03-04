@@ -4,20 +4,24 @@ import studentInfo.project.school.School;
 import studentInfo.project.school.Score;
 import studentInfo.project.school.Student;
 import studentInfo.project.school.Subject;
+import studentInfo.project.school.report.GenerateGradeReport;
 import studentInfo.project.utils.Define;
 
 public class StudentInfoApplication {
     School goodSchool = School.getInstance(); //학교생성
     Subject korean; //국어과목
     Subject math; //수학과목
+    GenerateGradeReport gradeReport = new GenerateGradeReport();
 
     public static void main(String[] args) {
         StudentInfoApplication app = new StudentInfoApplication();
 
-        app.createSubject();
+        app.createSubject(); //과목개설, 과목 학교에 등록
         app.createStudent();
 
         //성적 결과 생성해서 출력
+        String report = app.gradeReport.getReport();
+        System.out.println(report);
     }
 
     //과목 생성
